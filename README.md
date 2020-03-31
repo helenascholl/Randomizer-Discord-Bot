@@ -2,7 +2,7 @@
 
 ## Invite the bot
 
-https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=2048
+https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=10240
 
 ## Usage
 

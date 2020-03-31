@@ -13,11 +13,15 @@ client.on('message', (message) => {
         const maxNumber = parseInt(message.content.split(' ')[1]);
 
         if (maxNumber) {
-            message.channel.send(Math.floor(Math.random() * maxNumber + 1));
+            const random = Math.floor(Math.random() * maxNumber + 1);
+            message.channel.send(`<@${message.author.id}> ${random}`).catch(console.error);
         } else {
-            message.channel.send('My only purpose in this world is to give people who are too lazy to google a random number. So if you would be so kind and give me at least the maximum value it would make my existence a lot less painful.');
+            message.channel.send('My only purpose in this world is to give people who are too lazy to google a random number. So if you would be so kind and give me at least the maximum value it would make my existence a lot less painful.')
+                .catch(console.error);
         }
+
+        message.delete({ timeout: 5000 }).catch(console.error);
     }
 });
 
-client.login(auth.token);
+client.login(auth.token).catch(console.error);
