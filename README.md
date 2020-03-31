@@ -1,5 +1,4 @@
-# [BOT NAME]
-[BOT DESCRIPTION]
+# Randomizer-Discord-Bot
 
 ## Invite the bot
 
