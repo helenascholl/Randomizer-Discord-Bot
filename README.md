@@ -3,13 +3,11 @@
 
 ## Invite the bot
 
-https://discordapp.com/oauth2/authorize?&client_id=[CLIENT ID]&scope=bot&permissions=[PERMISSIONS INTEGER]
+https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=2048
 
-## Usage of the bot
+## Usage
 
-### Commands
-
-- ``[COMMAND]`` [WHAT DOES THIS COMMAND]
+`!random [maximum value]` returns a random integer between 1 and your number.
 
 ## Developers
 
@@ -20,10 +18,3 @@ If you want to run the bot yourself, [create a new Discord Bot](https://discorda
     "token": "[Your Token]"
 }
 ```
-
-<br>
-
-<hr>
-<br>
-<center>Copyright © 2020, [YOUR NAME].</center>
-<center>This bot is <a href="https://github.com/dorfingerjonas/discord-bot-template/blob/master/LICENSE">MIT licensed</a>

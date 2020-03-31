@@ -1,24 +1,22 @@
 {
-  "name": "discord-bot-template",
+  "name": "randomizer-discord-bot",
   "version": "1.0.0",
   "description": "Discord Bot Template Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dorfingerjonas/discord-bot-template.git"
+    "url": "git+https://github.com/schollsebastian/Randomizer-Discord-Bot.git"
   },
-  "author": "Jonas Dorfinger",
+  "author": "Sebastian Scholl <scholl.sebastian@gmx.at>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dorfingerjonas/discord-bot-template/issues"
+    "url": "https://github.com/schollsebastian/Randomizer-Discord-Bot/issues"
   },
-  "homepage": "https://github.com/dorfingerjonas/discord-bot-template#readme",
+  "homepage": "https://github.com/schollsebastian/Randomizer-Discord-Bot#readme",
   "dependencies": {
-    "discord.io": "^2.5.3",
-    "discord.js": "^12.0.2",
-    "winston": "^3.2.1"
+    "discord.js": "^12.1.1"
   }
 }
