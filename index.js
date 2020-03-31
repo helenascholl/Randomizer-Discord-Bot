@@ -5,6 +5,14 @@ const auth = require('./auth');
 const client = new Discord.Client();
 
 client.on('ready', () => {
+    client.user.setPresence({
+        status: '!random [maximum value]',
+        activity: {
+            name: 'my life pass by',
+            options: { type: 'WATCHING' }
+        }
+    });
+
     console.log(`Logged in as ${client.user.tag}`);
 });
 
