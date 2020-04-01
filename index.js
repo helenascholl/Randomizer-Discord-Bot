@@ -22,7 +22,7 @@ client.on('message', (message) => {
 
         if (maxNumber) {
             const random = Math.floor(Math.random() * maxNumber + 1);
-            message.channel.send('<@%s> a random number between `1` and `%s`: **`%s`**', message.author.id, maxNumber, random).catch(console.error);
+            message.channel.send(`<@${message.author.id}> a random number between \`1\` and \`${maxNumber}\`: **\`${random}\`**`).catch(console.error);
         } else {
             message.channel.send('My only purpose in this world is to give people who are too lazy to google a random number. So if you would be so kind and give me at least the maximum value it would make my existence a lot less painful.')
                 .catch(console.error);
