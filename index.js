@@ -50,14 +50,6 @@ function help(message) {
     .addField('Help', help);
 
     message.channel.send(embed);
-
-    /*const text = '- `!r dice <maximum value>`: Get a random number between 1 and <maximum value>. If <maximum value> is not specified it is set to 6.\n'
-        + '- `!r number <minimum value> <maximum value>`: Get a random number between <minimum number> and <maximum number>. <minimum number> is inclusive, <maximum number> is exclusive.\n'
-        + '- `!r bible`: Get a random bible verse.\n'
-        + '- `!r cat`: Get a random cat picture.\n'
-        + '- `!r fact`: Get a random fact about a number.\n';
-
-    message.channel.send(text).catch(console.error);*/
 }
 
 function dice(message, command) {
@@ -73,18 +65,18 @@ function dice(message, command) {
 }
 
 function number(message, command) {
-    let max = parseInt(command.split(' ')[1]);
-    let min = parseInt(command.split(' ')[2]);
+    let min = parseInt(command.split(' ')[1]);
+    let max = parseInt(command.split(' ')[2]);
 
-    if (max && min) {
-        max = Math.floor(max);
+    if (min && max) {
         min = Math.ceil(min);
+        max = Math.floor(max);
 
         if (max > min) {
             const random = Math.floor(Math.random() * (max - min)) + min;
             message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
         } else {
-            message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare we with your stupidity.`).catch(console.error);
+            message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`).catch(console.error);
         }
     } else {
         message.channel.send(`<@${message.author.id}> do you seriously not know what between means or do you just want to see me suffer?`).catch(console.error);
