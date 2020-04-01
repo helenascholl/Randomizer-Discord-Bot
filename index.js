@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const got = require('got');
 
 const auth = require('./auth');
 
@@ -10,19 +11,110 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    if (message.content.startsWith('!random')) {
-        const maxNumber = parseInt(message.content.split(' ')[1]);
+    if (message.content.startsWith('!r')) {
+        const command = message.content.split('!r ')[1];
 
-        if (maxNumber) {
-            const random = Math.floor(Math.random() * maxNumber + 1);
-            message.channel.send(`<@${message.author.id}> a random number between \`1\` and \`${maxNumber}\`: **\`${random}\`**`).catch(console.error);
+        if (!command) {
+            fallback(message);
+        } else if (command.startsWith('help')) {
+            help(message);
+        } else if (command.startsWith('dice')) {
+            dice(message, command);
+        } else if (command.startsWith('number')) {
+            number(message, command);
+        } else if (command === 'bible') {
+            bible(message);
+        } else if (command === 'cat') {
+            cat(message);
+        } else if (command === 'fact') {
+            fact(message);
         } else {
-            message.channel.send('My only purpose in this world is to give people who are too lazy to google a random number. So if you would be so kind and give me at least the maximum value it would make my existence a lot less painful.')
-                .catch(console.error);
+            fallback(message);
         }
-
-        message.delete({ timeout: 5000 }).catch(console.error);
     }
 });
 
 client.login(auth.token).catch(console.error);
+
+function help(message) {
+    const help = '`!r dice <maximum value>:` Roll a dice\n'
+    + '`!r number <minimum value> <maximum value>:` Get a random number\n'
+    + '`!r bible:` Get a random bible verse\n'
+    + '`!r cat:` Get a random cat picture\n'
+    + '`!r fact:` Get a random fact about a number\n'
+
+    const embed = new Discord.MessageEmbed()
+	.setColor('#0099ff')
+	.setTitle('Randomizer')
+    .setURL('https://github.com/schollsebastian/Randomizer-Discord-Bot')
+    .addField('Help', help);
+
+    message.channel.send(embed);
+
+    /*const text = '- `!r dice <maximum value>`: Get a random number between 1 and <maximum value>. If <maximum value> is not specified it is set to 6.\n'
+        + '- `!r number <minimum value> <maximum value>`: Get a random number between <minimum number> and <maximum number>. <minimum number> is inclusive, <maximum number> is exclusive.\n'
+        + '- `!r bible`: Get a random bible verse.\n'
+        + '- `!r cat`: Get a random cat picture.\n'
+        + '- `!r fact`: Get a random fact about a number.\n';
+
+    message.channel.send(text).catch(console.error);*/
+}
+
+function dice(message, command) {
+    let dice = parseInt(command.split(' ')[1]);
+    dice = dice ? Math.floor(dice) : 6;
+
+    if (dice > 0) {
+        const random = Math.floor(Math.random() * dice) + 1;
+        message.channel.send(`<@${message.author.id}> you rolled a **\`${random}\`** with a d${dice}`).catch(console.error);
+    } else {
+        message.channel.send(`<@${message.author.id}> do i really have to explain dice to you?`).catch(console.error);
+    }
+}
+
+function number(message, command) {
+    let max = parseInt(command.split(' ')[1]);
+    let min = parseInt(command.split(' ')[2]);
+
+    if (max && min) {
+        max = Math.floor(max);
+        min = Math.ceil(min);
+
+        if (max > min) {
+            const random = Math.floor(Math.random() * (max - min)) + min;
+            message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
+        } else {
+            message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare we with your stupidity.`).catch(console.error);
+        }
+    } else {
+        message.channel.send(`<@${message.author.id}> do you seriously not know what between means or do you just want to see me suffer?`).catch(console.error);
+    }
+}
+
+function bible(message) {
+    got.get('http://labs.bible.org/api/?passage=random').then((response) => {
+        let verse = response.body;
+        
+        verse = verse.replace('<b>', '**');
+        verse = verse.replace('</b>', '**:');
+
+        message.channel.send(`<@${message.author.id}> ${verse}`);
+    }).catch(console.error);
+}
+
+function cat(message) {
+    message.channel.send(`<@${message.author.id}> https://cataas.com/cat?cacheBuster=${Date.now()}`).catch(console.error);
+}
+
+function fact(message) {
+    let urls = ['trivia', 'math'];
+
+    got.get(`http://numbersapi.com/random/${urls[Math.floor(Math.random() * 2)]}`).then((response) => {
+        message.channel.send(`<@${message.author.id}> ${response.body}`).catch(console.error);
+    });
+}
+
+function fallback(message) {
+    message.channel.send(`<@${message.author.id}> my only purpose in this world is to entertain bored people. So if you would be so kind and tell me at least what I should it would make my existence a lot less painful.`)
+        .catch(console.error);
+}

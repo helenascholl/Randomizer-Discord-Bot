@@ -1,12 +1,22 @@
 # Randomizer-Discord-Bot
 
+Get random stuff from a Disord Bot.
+
 ## Invite the bot
 
-https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=10240
+https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=2048
 
 ## Usage
 
-`!random [maximum value]` returns a random integer between 1 and your number.
+- `!r dice <maximum value>:` Roll a dice
+
+- `!r number <minimum value> <maximum value>:` Get a random number
+
+- `!r bible:` Get a random bible verse
+
+- `!r cat:` Get a random cat picture
+
+- `!r fact:` Get a random fact about a number
 
 ## Developers
 

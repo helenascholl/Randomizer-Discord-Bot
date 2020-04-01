@@ -1,7 +1,7 @@
 {
   "name": "randomizer-discord-bot",
   "version": "1.0.0",
-  "description": "Discord Bot Template Project",
+  "description": "Get random stuff from a Disord Bot",
   "main": "index.js",
   "scripts": {
     "start": "node ."
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/schollsebastian/Randomizer-Discord-Bot#readme",
   "dependencies": {
-    "discord.js": "^12.1.1"
+    "discord.js": "^12.1.1",
+    "got": "^10.7.0"
   }
 }
