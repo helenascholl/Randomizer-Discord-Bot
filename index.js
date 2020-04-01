@@ -84,7 +84,7 @@ function number(message, command) {
 }
 
 function bible(message) {
-    got.get('http://labs.bible.org/api/?passage=random').then((response) => {
+    got.get('http://labs.bible.org/api/?passage=random').then(response => {
         let verse = response.body;
         
         verse = verse.replace('<b>', '**');
@@ -101,7 +101,7 @@ function cat(message) {
 function fact(message) {
     let urls = ['trivia', 'math'];
 
-    got.get(`http://numbersapi.com/random/${urls[Math.floor(Math.random() * 2)]}`).then((response) => {
+    got.get(`http://numbersapi.com/random/${urls[Math.floor(Math.random() * 2)]}`).then(response => {
         message.channel.send(`<@${message.author.id}> ${response.body}`).catch(console.error);
     });
 }
