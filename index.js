@@ -38,10 +38,10 @@ client.login(auth.token).catch(console.error);
 
 function help(message) {
     const help = '`!r dice <maximum value>:` Roll a dice\n'
-    + '`!r number <minimum value> <maximum value>:` Get a random number\n'
+    + '`!r number <inclusive minimum> <exclusive maximum>:` Get a random number\n'
     + '`!r bible:` Get a random bible verse\n'
     + '`!r cat:` Get a random cat picture\n'
-    + '`!r fact:` Get a random fact about a number\n'
+    + '`!r fact:` Get a random fact about a number\n';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')

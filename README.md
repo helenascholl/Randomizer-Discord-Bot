@@ -10,7 +10,7 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r dice <maximum value>:` Roll a dice
 
-- `!r number <minimum value> <maximum value>:` Get a random number
+- `!r number <inclusive minimum> <exclusive maximum>:` Get a random number
 
 - `!r bible:` Get a random bible verse
 
