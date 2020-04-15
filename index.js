@@ -60,7 +60,7 @@ function dice(message, command) {
         const random = Math.floor(Math.random() * dice) + 1;
         message.channel.send(`<@${message.author.id}> you rolled a **\`${random}\`** with a d${dice}`).catch(console.error);
     } else {
-        message.channel.send(`<@${message.author.id}> do i really have to explain dice to you?`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> do i really have to explain a dice to you?`).catch(console.error);
     }
 }
 
