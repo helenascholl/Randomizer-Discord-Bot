@@ -54,11 +54,18 @@ function help(message) {
 
 function dice(message, command) {
     let dice = parseInt(command.split(' ')[1]);
-    dice = dice ? Math.floor(dice) : 6;
+
+    if (!dice && dice != 0) {
+        dice = 6;
+    } else {
+        dice = Math.floor(dice);
+    }
 
     if (dice > 0) {
         const random = Math.floor(Math.random() * dice) + 1;
         message.channel.send(`<@${message.author.id}> you rolled a **\`${random}\`** with a d${dice}`).catch(console.error);
+    } else if (dice == 0) {
+        message.channel.send(`<@${message.author.id}> Congratulations! You just won a mention in my suicide note!`).catch(console.error);
     } else {
         message.channel.send(`<@${message.author.id}> do i really have to explain a dice to you?`).catch(console.error);
     }
