@@ -102,7 +102,12 @@ function bible(message) {
 }
 
 function cat(message) {
-    message.channel.send(`<@${message.author.id}> https://cataas.com/cat?cacheBuster=${Date.now()}`).catch(console.error);
+    message.channel.send(`<@${message.author.id}>`, {
+        files: [{
+            attachment: `https://cataas.com/cat?cacheBuster=${Date.now()}`,
+            name: 'cat.jpg'
+        }]
+    });
 }
 
 function fact(message) {
