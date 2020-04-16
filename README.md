@@ -4,7 +4,7 @@ Get random stuff from a Disord Bot.
 
 ## Invite the bot
 
-https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=18432
+https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&permissions=34816
 
 ## Usage
 
