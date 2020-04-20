@@ -20,10 +20,13 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 ## Developers
 
-If you want to run the bot yourself, [create a new Discord Bot](https://discordapp.com/developers/docs/intro#bots-and-apps) and copy the token into a file called `auth.json`. It should look like this:
+### Create a Discord Application
 
-```json
-{
-    "token": "[Your Token]"
-}
+If you want to run the bot yourself, [create a new Discord Bot](https://discordapp.com/developers/docs/intro#bots-and-apps) and copy the token into  `auth.json`.
+
+### Start the Bot
+
+```shell
+npm install
+npm start
 ```
