@@ -49,7 +49,7 @@ function help(message) {
     .setURL('https://github.com/schollsebastian/Randomizer-Discord-Bot')
     .addField('Help', help);
 
-    message.channel.send(embed);
+    message.channel.send(embed).catch(console.error);
 }
 
 function dice(message, command) {
@@ -97,7 +97,7 @@ function bible(message) {
         verse = verse.replace('<b>', '**');
         verse = verse.replace('</b>', '**:');
 
-        message.channel.send(`<@${message.author.id}> ${verse}`);
+        message.channel.send(`<@${message.author.id}> ${verse}`).catch(console.error);
     }).catch(console.error);
 }
 
@@ -107,7 +107,7 @@ function cat(message) {
             attachment: `https://cataas.com/cat?cacheBuster=${Date.now()}`,
             name: 'cat.jpg'
         }]
-    });
+    }).catch(console.error);
 }
 
 function fact(message) {
