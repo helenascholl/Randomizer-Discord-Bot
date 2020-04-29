@@ -28,6 +28,8 @@ client.on('message', (message) => {
             cat(message);
         } else if (command === 'fact') {
             fact(message);
+        } else if (command === 'nsfw') {
+            nsfw(message);
         } else {
             fallback(message);
         }
@@ -81,11 +83,11 @@ function number(message, command) {
         && max > min
         ) {
         const random = Math.floor(Math.random() * (max - min + 1)) + min;
-            message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
-        } else {
-            message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`).catch(console.error);
-        }
+        message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
+    } else {
+        message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`).catch(console.error);
     }
+}
 
 function bible(message) {
     got.get('http://labs.bible.org/api/?passage=random').then(response => {
@@ -113,6 +115,34 @@ function fact(message) {
     got.get(`http://numbersapi.com/random/${urls[Math.floor(Math.random() * 2)]}`).then(response => {
         message.channel.send(`<@${message.author.id}> ${response.body}`).catch(console.error);
     });
+}
+
+function nsfw(message) {
+    if (message.channel.nsfw) {
+        sendImage(message);
+    } else {
+        message.channel.send(`<@${message.author.id}> are you aware that there's an invention called the internet?`).catch(console.error);
+    }
+}
+
+function sendImage(message) {
+    let imageId = '';
+    let validChars = '0123456789abcdef';
+
+    for (let i = 0; i < 5; i++) {
+        imageId += validChars.charAt(Math.floor(Math.random() * validChars.length));
+    }
+
+    let url = `https://disco.scrolller.com/media/${imageId}.jpg`;
+
+    got.get(url).then(() => {
+        message.channel.send(`<@${message.author.id}>`, {
+            files: [{
+                attachment: url,
+                name: 'nsfw.jpg'
+            }]
+        }).catch(console.error);
+    }).catch(() => sendImage(message));
 }
 
 function fallback(message) {
