@@ -38,7 +38,7 @@ client.login(auth.token).catch(console.error);
 
 function help(message) {
     const help = '`!r dice <maximum value>:` Roll a dice\n'
-    + '`!r number <inclusive minimum> <exclusive maximum>:` Get a random number\n'
+    + '`!r number <minimum> <maximum>:` Get a random number\n'
     + '`!r bible:` Get a random bible verse\n'
     + '`!r cat:` Get a random cat picture\n'
     + '`!r fact:` Get a random fact about a number\n';
@@ -72,23 +72,20 @@ function dice(message, command) {
 }
 
 function number(message, command) {
-    let min = parseInt(command.split(' ')[1]);
-    let max = parseInt(command.split(' ')[2]);
+    let min = Math.ceil(parseInt(command.split(' ')[1]));
+    let max = Math.floor(parseInt(command.split(' ')[2]));
 
-    if (min && max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-
-        if (max > min) {
-            const random = Math.floor(Math.random() * (max - min)) + min;
+    if (
+        (min && max
+        || (min && max == 0 || max && min == 0))
+        && max > min
+        ) {
+        const random = Math.floor(Math.random() * (max - min + 1)) + min;
             message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
         } else {
             message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`).catch(console.error);
         }
-    } else {
-        message.channel.send(`<@${message.author.id}> do you seriously not know what between means or do you just want to see me suffer?`).catch(console.error);
     }
-}
 
 function bible(message) {
     got.get('http://labs.bible.org/api/?passage=random').then(response => {
