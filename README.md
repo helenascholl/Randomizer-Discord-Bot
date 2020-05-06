@@ -16,6 +16,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r cat:` Get a random cat picture
 
+- `!r dog:` Get a random dog picture
+
 - `!r fact:` Get a random fact about a number
 
 ## Developers

@@ -26,6 +26,8 @@ client.on('message', (message) => {
             bible(message);
         } else if (command === 'cat') {
             cat(message);
+        } else if (command === 'dog') {
+            dog(message);
         } else if (command === 'fact') {
             fact(message);
         } else if (command === 'nsfw') {
@@ -43,6 +45,7 @@ function help(message) {
     + '`!r number <minimum> <maximum>:` Get a random number\n'
     + '`!r bible:` Get a random bible verse\n'
     + '`!r cat:` Get a random cat picture\n'
+    + '`!r dog:` Get a random dog picture\n'
     + '`!r fact:` Get a random fact about a number\n';
 
     const embed = new Discord.MessageEmbed()
@@ -107,6 +110,17 @@ function cat(message) {
             name: 'cat.jpg'
         }]
     }).catch(console.error);
+}
+
+function dog(message) {
+    got.get('https://dog.ceo/api/breeds/image/random').then(response => {
+        message.channel.send(`<@${message.author.id}>`, {
+            files: [{
+                attachment: JSON.parse(response.body).message,
+                name: 'dog.jpg'
+            }]
+        }).catch(console.error);
+    });
 }
 
 function fact(message) {
