@@ -16,7 +16,7 @@ client.on('message', (message) => {
 
         if (!command) {
             fallback(message);
-        } else if (command.startsWith('help')) {
+        } else if (command === 'help') {
             help(message);
         } else if (command.startsWith('dice')) {
             dice(message, command);
