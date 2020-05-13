@@ -11,7 +11,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    if (message.content.startsWith('!r')) {
+    if (message.content.startsWith('!r ')) {
         const command = message.content.split('!r ')[1];
 
         if (!command) {
