@@ -48,7 +48,8 @@ function help(message) {
     + '`!r bible:` Get a random bible verse\n'
     + '`!r cat:` Get a random cat picture\n'
     + '`!r dog:` Get a random dog picture\n'
-    + '`!r fact:` Get a random fact about a number\n';
+    + '`!r fact:` Get a random fact about a number\n'
+    + '`!r insult <name>`: Get a random insult';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
