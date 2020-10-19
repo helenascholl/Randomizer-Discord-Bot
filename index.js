@@ -32,6 +32,8 @@ client.on('message', (message) => {
             fact(message);
         } else if (command === 'nsfw') {
             nsfw(message);
+        } else if (command.startsWith('insult')) {
+            insult(message, command);
         } else {
             fallback(message);
         }
@@ -157,6 +159,22 @@ function sendImage(message) {
             }]
         }).catch(console.error);
     }).catch(() => sendImage(message));
+}
+
+function insult(message, command) {
+    let name = command.split(' ')[1];
+    let url = 'https://insult.mattbas.org/api/insult';
+
+    if (name) {
+        url += `?who=${name}`;
+    }
+
+    got.get(url, {
+        headers: { 'Content-Type': 'text/json' }
+    }).then(response => {
+        message.channel.send(`<@${message.author.id}> ${response.body}`)
+            .catch(console.error);
+    }).catch(console.error);
 }
 
 function fallback(message) {
