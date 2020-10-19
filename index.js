@@ -70,11 +70,14 @@ function dice(message, command) {
 
     if (dice > 0) {
         const random = Math.floor(Math.random() * dice) + 1;
-        message.channel.send(`<@${message.author.id}> you rolled a **\`${random}\`** with a d${dice}`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> you rolled a **\`${random}\`** with a d${dice}`)
+            .catch(console.error);
     } else if (dice == 0) {
-        message.channel.send(`<@${message.author.id}> Congratulations! You just won a mention in my suicide note!`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> Congratulations! You just won a mention in my suicide note!`)
+            .catch(console.error);
     } else {
-        message.channel.send(`<@${message.author.id}> do i really have to explain a dice to you?`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> do i really have to explain a dice to you?`)
+            .catch(console.error);
     }
 }
 
@@ -88,9 +91,11 @@ function number(message, command) {
         && max > min
         ) {
         const random = Math.floor(Math.random() * (max - min + 1)) + min;
-        message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`)
+            .catch(console.error);
     } else {
-        message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> my life is already bad enough so please spare me with your stupidity.`)
+            .catch(console.error);
     }
 }
 
