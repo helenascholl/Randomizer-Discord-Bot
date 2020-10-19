@@ -169,19 +169,22 @@ function sendImage(message) {
 }
 
 function insult(message, command) {
-    let name = command.split(' ')[1];
     let url = 'https://insult.mattbas.org/api/insult';
+    let name = command.split(' ')[1];
 
-    if (name) {
-        url += `?who=${name}`;
+    if (name && name.startsWith('<@') && name.endsWith('>')) {
+        url += `?who=*`;
+
+        got.get(url, { headers: { 'Content-Type': 'text/json' } }).then(response => {
+            message.channel.send(response.body.replace('*', name))
+                .catch(console.error);
+        }).catch(console.error);
+    } else {
+        got.get(url, { headers: { 'Content-Type': 'text/json' } }).then(response => {
+            message.channel.send(`<@${message.author.id}> ${response.body}`)
+                .catch(console.error);
+        }).catch(console.error);
     }
-
-    got.get(url, {
-        headers: { 'Content-Type': 'text/json' }
-    }).then(response => {
-        message.channel.send(`<@${message.author.id}> ${response.body}`)
-            .catch(console.error);
-    }).catch(console.error);
 }
 
 function fallback(message) {
