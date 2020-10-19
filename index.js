@@ -137,7 +137,8 @@ function nsfw(message) {
     if (message.channel.nsfw) {
         sendImage(message);
     } else {
-        message.channel.send(`<@${message.author.id}> are you aware that there's an invention called the internet?`).catch(console.error);
+        message.channel.send(`<@${message.author.id}> are you aware that there's an invention called the internet?`)
+            .catch(console.error);
     }
 }
 
