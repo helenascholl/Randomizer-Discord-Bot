@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const got = require('got');
 
-const auth = require('./auth');
-
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -40,7 +38,7 @@ client.on('message', (message) => {
     }
 });
 
-client.login(auth.token).catch(console.error);
+client.login(process.env.DISCORD_TOKEN).catch(console.error);
 
 function help(message) {
     const help = '`!r dice <maximum value>:` Roll a dice\n'
