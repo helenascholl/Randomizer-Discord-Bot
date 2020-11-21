@@ -20,6 +20,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r fact:` Get a random fact about a number
 
+- `!r insult <name>:` Get a random insult
+
 ## For Developers
 
 ### Create a Discord Application
