@@ -55,11 +55,11 @@ function help(message) {
     + '`!r cat:` Get a random cat picture\n'
     + '`!r dog:` Get a random dog picture\n'
     + '`!r fact:` Get a random fact about a number\n'
-    + '`!r insult <name>`: Get a random insult\n'
-    + '`!r dadjoke`: Get a random dad joke\n'
-    + '`!r wikipedia`: Get a random Wikipedia-Article\n'
-    + '`!r kanye`: Get a random Kanye West quote\n'
-    + '`!r trump`: Get a random Donald Trump quote';
+    + '`!r insult <name>:` Get a random insult\n'
+    + '`!r dadjoke:` Get a random dad joke\n'
+    + '`!r wikipedia:` Get a random Wikipedia-Article\n'
+    + '`!r kanye:` Get a random Kanye West quote\n'
+    + '`!r trump:` Get a random Donald Trump quote';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
