@@ -4,7 +4,7 @@
   "description": "Get random stuff from a Disord Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

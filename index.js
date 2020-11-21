@@ -42,7 +42,7 @@ client.on('message', (message) => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN).catch(console.error);
+client.login(process.env['DISCORD_TOKEN']).catch(console.error);
 
 function help(message) {
     const help = '`!r dice <maximum value>:` Roll a dice\n'
@@ -94,7 +94,7 @@ function number(message, command) {
         (min && max
         || (min && max == 0 || max && min == 0))
         && max > min
-        ) {
+    ) {
         const random = Math.floor(Math.random() * (max - min + 1)) + min;
         message.channel.send(`<@${message.author.id}> a random number between \`${min}\` and \`${max}\`: **\`${random}\`**`)
             .catch(console.error);
