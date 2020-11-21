@@ -28,6 +28,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r kanye:` Get a random Kanye West quote
 
+- `!r trump:` Get a random Donald Trump quote
+
 ## For Developers
 
 ### Create a Discord Application

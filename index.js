@@ -38,6 +38,8 @@ client.on('message', (message) => {
             wikipedia(message);
         } else if (command === 'kanye') {
             kanye(message);
+        } else if (command === 'trump') {
+            trump(message);
         } else {
             fallback(message);
         }
@@ -56,7 +58,8 @@ function help(message) {
     + '`!r insult <name>`: Get a random insult\n'
     + '`!r dadjoke`: Get a random dad joke\n'
     + '`!r wikipedia`: Get a random Wikipedia-Article\n'
-    + '`!r kanye`: Get a random Kanye West quote';
+    + '`!r kanye`: Get a random Kanye West quote\n'
+    + '`!r trump`: Get a random Donald Trump quote';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
@@ -216,6 +219,14 @@ function kanye(message) {
         message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).quote}`)
             .catch(console.error);
     }).catch(console.error);
+}
+
+function trump(message) {
+    got.get('https://www.tronalddump.io/random/quote', { headers: { 'Accept': 'application/json' } })
+        .then(response => {
+            message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).value}`)
+                .catch(console.error);
+        }).catch(console.error);
 }
 
 function fallback(message) {
