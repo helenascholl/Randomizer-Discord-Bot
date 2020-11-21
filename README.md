@@ -26,6 +26,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r wikipedia:` Get a random Wikipedia-Article
 
+- `!r kanye:` Get a random Kanye West quote
+
 ## For Developers
 
 ### Create a Discord Application

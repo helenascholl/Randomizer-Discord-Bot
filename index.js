@@ -36,6 +36,8 @@ client.on('message', (message) => {
             dadjoke(message);
         } else if (command === 'wikipedia') {
             wikipedia(message);
+        } else if (command === 'kanye') {
+            kanye(message);
         } else {
             fallback(message);
         }
@@ -53,7 +55,8 @@ function help(message) {
     + '`!r fact:` Get a random fact about a number\n'
     + '`!r insult <name>`: Get a random insult\n'
     + '`!r dadjoke`: Get a random dad joke\n'
-    + '`!r wikipedia`: Get a random Wikipedia-Article';
+    + '`!r wikipedia`: Get a random Wikipedia-Article\n'
+    + '`!r kanye`: Get a random Kanye West quote';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
@@ -204,6 +207,13 @@ function wikipedia(message) {
         const article = `https://en.wikipedia.org/wiki/${JSON.parse(response.body).query.random[0].title.replace(/ /g, '_')}`;
 
         message.channel.send(`<@${message.author.id}> ${article}`)
+            .catch(console.error);
+    }).catch(console.error);
+}
+
+function kanye(message) {
+    got.get('https://api.kanye.rest').then(response => {
+        message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).quote}`)
             .catch(console.error);
     }).catch(console.error);
 }
