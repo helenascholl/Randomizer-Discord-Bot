@@ -32,6 +32,8 @@ client.on('message', (message) => {
             nsfw(message);
         } else if (command.startsWith('insult')) {
             insult(message, command);
+        } else if (command === 'dadjoke') {
+            dadjoke(message);
         } else {
             fallback(message);
         }
@@ -47,7 +49,8 @@ function help(message) {
     + '`!r cat:` Get a random cat picture\n'
     + '`!r dog:` Get a random dog picture\n'
     + '`!r fact:` Get a random fact about a number\n'
-    + '`!r insult <name>`: Get a random insult';
+    + '`!r insult <name>`: Get a random insult\n'
+    + '`!r dadjoke`: Get a random dad joke';
 
     const embed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
@@ -183,6 +186,14 @@ function insult(message, command) {
                 .catch(console.error);
         }).catch(console.error);
     }
+}
+
+function dadjoke(message) {
+    got.get('https://icanhazdadjoke.com', { headers: { 'Accept': 'application/json' } })
+        .then(response => {
+            message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).joke}`)
+                .catch(console.error);
+        }).catch(console.error);
 }
 
 function fallback(message) {
