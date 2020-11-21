@@ -22,6 +22,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r insult <name>:` Get a random insult
 
+- `!r dadjoke:` Get a random dad joke
+
 ## For Developers
 
 ### Create a Discord Application
