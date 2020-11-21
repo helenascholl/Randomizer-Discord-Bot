@@ -34,6 +34,8 @@ client.on('message', (message) => {
             insult(message, command);
         } else if (command === 'dadjoke') {
             dadjoke(message);
+        } else if (command === 'wikipedia') {
+            wikipedia(message);
         } else {
             fallback(message);
         }
@@ -194,6 +196,15 @@ function dadjoke(message) {
             message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).joke}`)
                 .catch(console.error);
         }).catch(console.error);
+}
+
+function wikipedia(message) {
+    got.get('https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&format=json').then(response => {
+        const article = `https://en.wikipedia.org/wiki/${JSON.parse(response.body).query.random[0].title.replace(/ /g, '_')}`;
+
+        message.channel.send(`<@${message.author.id}> ${article}`)
+            .catch(console.error);
+    }).catch(console.error);
 }
 
 function fallback(message) {

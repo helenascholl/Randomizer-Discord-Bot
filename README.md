@@ -24,6 +24,8 @@ https://discordapp.com/oauth2/authorize?&client_id=694513702891946094&scope=bot&
 
 - `!r dadjoke:` Get a random dad joke
 
+- `!r wikipedia:` Get a random Wikipedia-Article
+
 ## For Developers
 
 ### Create a Discord Application
