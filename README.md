@@ -1,6 +1,6 @@
 # Randomizer-Discord-Bot
 
-Get random stuff from a Disord Bot.
+Get random stuff from a Discord Bot.
 
 ## Invite the bot
 
