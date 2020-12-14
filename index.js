@@ -151,31 +151,18 @@ function fact(message) {
 
 function nsfw(message) {
     if (message.channel.nsfw) {
-        sendImage(message);
+        got.get('http://titsnarse.co.uk/random_json.php').then(response => {
+            message.channel.send(`<@${message.author.id}>`, {
+                files: [{
+                    attachment: `http://titsnarse.co.uk${JSON.parse(response.body).src}`,
+                    name: 'nsfw.jpg'
+                }]
+            }).catch(console.error);
+        }).catch(console.error);
     } else {
         message.channel.send(`<@${message.author.id}> are you aware that there's an invention called the internet?`)
             .catch(console.error);
     }
-}
-
-function sendImage(message) {
-    let imageId = '';
-    let validChars = '0123456789abcdef';
-
-    for (let i = 0; i < 5; i++) {
-        imageId += validChars.charAt(Math.floor(Math.random() * validChars.length));
-    }
-
-    let url = `https://disco.scrolller.com/media/${imageId}.jpg`;
-
-    got.get(url).then(() => {
-        message.channel.send(`<@${message.author.id}>`, {
-            files: [{
-                attachment: url,
-                name: 'nsfw.jpg'
-            }]
-        }).catch(console.error);
-    }).catch(() => sendImage(message));
 }
 
 function insult(message, command) {
