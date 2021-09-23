@@ -151,13 +151,11 @@ function fact(message) {
 
 function nsfw(message) {
     if (message.channel.nsfw) {
-        got.get('http://titsnarse.co.uk/random_json.php').then(response => {
-            message.channel.send(`<@${message.author.id}>`, {
-                files: [{
-                    attachment: `http://titsnarse.co.uk${JSON.parse(response.body).src}`,
-                    name: 'nsfw.jpg'
-                }]
-            }).catch(console.error);
+        got.get('https://api.ksoft.si/images/random-nsfw', {
+            headers: { 'Authorization': `Bearer ${process.env['KSOFT_API_TOKEN']}` }
+        }).then(response => {
+            message.channel.send(`<@${message.author.id}> ${JSON.parse(response.body).image_url}`)
+              .catch(console.error);
         }).catch(console.error);
     } else {
         message.channel.send(`<@${message.author.id}> are you aware that there's an invention called the internet?`)
