@@ -18,6 +18,6 @@
   "homepage": "https://github.com/schollsebastian/Randomizer-Discord-Bot#readme",
   "dependencies": {
     "discord.js": "^12.1.1",
-    "got": "^10.7.0"
+    "got": "^12.5.3"
   }
 }
